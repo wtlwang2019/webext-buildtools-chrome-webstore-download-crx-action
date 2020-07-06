@@ -1,0 +1,44 @@
+{
+  "name": "webext-buildtools-chrome-webstore-download-crx-action",
+  "version": "1.0.0",
+  "private": false,
+  "description": "Download crx file of published WebExtension from Chrome Web Store",
+  "main": "lib/main.js",
+  "scripts": {
+    "build": "tsc",
+    "pack": "ncc build",
+    "all": "npm run build && npm run pack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cardinalby/webext-buildtools-chrome-webstore-download-crx-action.git"
+  },
+  "keywords": [
+    "webext-buildtools",
+    "webext",
+    "webextensions",
+    "webextension",
+    "build",
+    "deployment",
+    "deploy",
+    "publish",
+    "chrome",
+    "webstore",
+    "download",
+    "action"
+  ],
+  "author": "cardinalby",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^7.0.1",
+    "@actions/core": "^1.2.0",
+    "github-actions-utils": "^1.0.7",
+    "typed-chrome-webstore-api": "^0.4.9"
+  },
+  "devDependencies": {
+    "@types/node": "^12.7.12",
+    "@types/fs-extra": "^5.0.4",
+    "@zeit/ncc": "^0.20.5",
+    "typescript": "^3.6.4"
+  }
+}
