@@ -1,6 +1,6 @@
 {
   "name": "webext-buildtools-chrome-webstore-download-crx-action",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "description": "Download crx file of published WebExtension from Chrome Web Store",
   "main": "lib/main.js",
@@ -31,14 +31,14 @@
   "license": "MIT",
   "dependencies": {
     "fs-extra": "^7.0.1",
-    "@actions/core": "^1.2.6",
+    "@actions/core": "^1.6.0",
     "github-actions-utils": "^1.0.8",
-    "typed-chrome-webstore-api": "^0.4.9"
+    "typed-chrome-webstore-api": "^0.4.12"
   },
   "devDependencies": {
     "@types/node": "^12.7.12",
     "@types/fs-extra": "^5.0.4",
-    "@zeit/ncc": "^0.20.5",
-    "typescript": "^3.6.4"
+    "@zeit/ncc": "^0.22.3",
+    "typescript": "^3.9.10"
   }
 }
