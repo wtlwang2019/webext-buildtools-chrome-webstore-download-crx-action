@@ -29,7 +29,7 @@ you want to download crx for:
  
 * `crxFilePath` the absolute path to the downloaded crx file (if was)
 
-## Example usage
+## Usage example
 
 ```yaml
 uses: cardinalby/webext-buildtools-chrome-webstore-download-crx-action@v1
@@ -37,3 +37,7 @@ with:
   extensionId: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'  
   crxFilePath: 'build/extension.published.crx'
 ```
+
+---
+If you are interested in the building the entire deployment workflow for WebExtension, 
+you can read this [article](https://dev.to/cardinalby/webextension-deployment-and-publishing-using-github-actions-522o).
