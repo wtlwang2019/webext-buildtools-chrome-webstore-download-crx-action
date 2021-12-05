@@ -5,6 +5,10 @@
 This action is experimental and uses undocumented Chrome Web Store endpoint.
 Based on [typed-chrome-webstore-api](https://www.npmjs.com/package/typed-chrome-webstore-api) package.
 
+It downloads crx of already published extension. To publish an extension in a workflow look at 
+[upload](https://github.com/cardinalby/webext-buildtools-chrome-webstore-upload-action) and
+[publish](https://github.com/cardinalby/webext-buildtools-chrome-webstore-publish-action) actions.
+
 ## Inputs
 
 * `extensionId` **Required**<br>
