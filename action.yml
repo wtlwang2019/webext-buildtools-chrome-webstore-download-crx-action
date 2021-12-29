@@ -29,7 +29,7 @@ outputs:
   crxFilePath:
     description: 'the absolute path to the downloaded crx file'
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
 branding:
   icon: 'package'
