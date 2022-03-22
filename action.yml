@@ -1,4 +1,4 @@
-name: 'webext-buildtools-chrome-webstore-download-crx-action'
+name: 'Download crx file from Chrome Web Store'
 description: 'Download crx file of published WebExtension from Chrome Web Store'
 author: 'cardinalby'
 inputs:
