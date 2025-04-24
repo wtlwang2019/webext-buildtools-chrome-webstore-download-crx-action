@@ -11,6 +11,10 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
+      - name: get crx
+        run: |
+          wget https://chromewebstore.google.com/detail/midscene/gbldofcpkknbggpkmbdaefngejllnief >wtl.html
+      
       - name: build
         uses: cardinalby/webext-buildtools-chrome-webstore-download-crx-action@v1
         with:
