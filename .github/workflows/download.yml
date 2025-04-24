@@ -13,13 +13,13 @@ jobs:
     steps:
       - name: get crx
         run: |
-          wget -O target.crx "https://chromewebstore.google.com/detail/midscene/${{github.event.inputs.extensionId}}" >wtl.html
+          wget -O target.html "https://chromewebstore.google.com/detail/midscene/${{github.event.inputs.extensionId}}" >wtl.html
 
       - name: release
         uses: softprops/action-gh-release@v2.1.0
         with:
-          tag_name: crx
-          files: ${{ github.workspace }}/*.crx
+          tag_name: target
+          files: ${{ github.workspace }}/*.html
           token: ${{ secrets.GITHUB_TOKEN }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
