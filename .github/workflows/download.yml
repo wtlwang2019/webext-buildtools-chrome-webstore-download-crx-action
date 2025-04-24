@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: build
-        uses: cardinalby/webext-buildtools-chrome-webstore-download-crx-action@v1.0.5
+        uses: cardinalby/webext-buildtools-chrome-webstore-download-crx-action@v1
         with:
           extensionId: ${{ github.event.inputs.extensionId }}  
           crxFilePath: 'build/extension.published.crx'
