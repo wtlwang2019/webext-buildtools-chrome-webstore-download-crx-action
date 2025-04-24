@@ -1,9 +1,15 @@
 name: "download crx"
-
+on:
+  workflow_dispatch:
+    inputs:
+      extensionId:
+        description: '请填写chrome插件id'
+        required: true
+        default: 'gbldofcpkknbggpkmbdaefngejllnief'
 
 jobs:
   build:
     uses: cardinalby/webext-buildtools-chrome-webstore-download-crx-action@v1.0.5
     with:
-      extensionId: 'gbldofcpkknbggpkmbdaefngejllnief'  
+      extensionId: ${{ github.event.inputs.extensionId }}  
       crxFilePath: 'build/extension.published.crx'
