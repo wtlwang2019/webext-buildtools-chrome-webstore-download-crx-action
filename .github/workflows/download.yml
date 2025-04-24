@@ -1,5 +1,12 @@
+on:
+  push:
+    branches:
+      - master
+      - 'v*'
 
-uses: cardinalby/webext-buildtools-chrome-webstore-download-crx-action@v1.0.5
-with:
-  extensionId: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'  
-  crxFilePath: 'build/extension.published.crx'
+jobs:
+  build:
+    uses: cardinalby/webext-buildtools-chrome-webstore-download-crx-action@v1.0.5
+    with:
+      extensionId: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'  
+      crxFilePath: 'build/extension.published.crx'
