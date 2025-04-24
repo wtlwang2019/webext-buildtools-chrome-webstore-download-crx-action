@@ -13,10 +13,18 @@ jobs:
     steps:
       - name: get crx
         run: |
-          wget https://chromewebstore.google.com/detail/midscene/gbldofcpkknbggpkmbdaefngejllnief >wtl.html
-      
-      - name: build
-        uses: cardinalby/webext-buildtools-chrome-webstore-download-crx-action@v1
+          wget -O target.crx "https://chromewebstore.google.com/detail/midscene/${{github.event.inputs.extensionId}}" >wtl.html
+
+      - name: release
+        uses: softprops/action-gh-release@v2.1.0
         with:
-          extensionId: ${{ github.event.inputs.extensionId }}  
-          crxFilePath: 'build/extension.published.crx'
+          tag_name: crx
+          files: ${{ github.workspace }}/*.crx
+          token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: build
+      #   uses: cardinalby/webext-buildtools-chrome-webstore-download-crx-action@v1
+      #   with:
+      #     extensionId: ${{ github.event.inputs.extensionId }}  
+      #     crxFilePath: 'build/extension.published.crx'
