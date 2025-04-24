@@ -1,35 +1,35 @@
 name: 'Download crx file from Chrome Web Store'
 
-on:
-  workflow_dispatch:
-    inputs:
-      extensionId:
-        description: 'Your extension id in Chrome Web Store'
-        required: true
-      crxFilePath:
-        description: 'Path to save downloaded crx file'
-        required: true
-      prodVersion:
-        description: 'Target version of Chrome, which must be 31.0.1609.0 at the very least'
-        required: false
-        default: '83.0.4103.116'
-      acceptFormat:
-        description: 'Accept crx file formats delimited by | sign. Values: crx2, crx3'
-        required: false
-        default: 'crx2|crx3'
-      platformOs:
-        description: 'OS to download published crx file for'
-        required: false
-      platformArch:
-        description: 'Architecture to download published crx file for'
-        required: false
-      platformNaclArch:
-        description: 'NACL Architecture to download published crx file for'
-        required: false
-jobs:
-  pull_and_package:
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: 'actions@node20'
-        with:
-          main: 'dist/index.js'
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       extensionId:
+#         description: 'Your extension id in Chrome Web Store'
+#         required: true
+#       crxFilePath:
+#         description: 'Path to save downloaded crx file'
+#         required: true
+#       prodVersion:
+#         description: 'Target version of Chrome, which must be 31.0.1609.0 at the very least'
+#         required: false
+#         default: '83.0.4103.116'
+#       acceptFormat:
+#         description: 'Accept crx file formats delimited by | sign. Values: crx2, crx3'
+#         required: false
+#         default: 'crx2|crx3'
+#       platformOs:
+#         description: 'OS to download published crx file for'
+#         required: false
+#       platformArch:
+#         description: 'Architecture to download published crx file for'
+#         required: false
+#       platformNaclArch:
+#         description: 'NACL Architecture to download published crx file for'
+#         required: false
+# jobs:
+#   pull_and_package:
+#     runs-on: ubuntu-22.04
+#     steps:
+#       - uses: 'actions@node20'
+#         with:
+#           main: 'dist/index.js'
