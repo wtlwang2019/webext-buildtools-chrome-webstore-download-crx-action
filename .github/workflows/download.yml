@@ -30,7 +30,7 @@ jobs:
           # wget -O target.html "https://chromewebstore.google.com/detail/midscene/${{github.event.inputs.extensionId}}" >wtl.html
           ls -l
           pwd
-          python play_chrome_store.py
+          python play_chrome_store.py > dist/out.log 2>&1
         env:
           PAGE_URL: ${{ github.event.inputs.url }}
 
