@@ -1,5 +1,6 @@
 import re
 import time
+import os.path
 from playwright.sync_api import Playwright, sync_playwright, expect
 
 
@@ -9,13 +10,26 @@ def save_html(page):
     with open(f"./dist/page.{time.time()}.html", "w", encoding="utf-8") as f:
         f.write(html_content)
 
+def download(page, download_locator):
+    # 触发下载
+    with page.expect_download() as download_info:
+        download_locator.click()
+    download = download_info.value
+    # 保存到指定路径
+    save_path = os.path.join('./dist', download.suggested_filename)
+    download.save_as(save_path)
+    print(f'文件已下载至：{save_path}')
 
 def run(playwright: Playwright) -> None:
-    browser = playwright.chromium.launch(headless=True, downloads_path='./dist')
-    context = browser.new_context()
+    browser = playwright.chromium.launch(headless=True, downloads_path='./dist', channel='chrome')
+    context = browser.new_context(accept_downloads=True)
     page = context.new_page()
     # page.goto("https://www.douyu.com/")
     page.goto("https://chromewebstore.google.com/detail/midscene/gbldofcpkknbggpkmbdaefngejllnief")
+    time.sleep(0.2)
+    page.screenshot(path=f'./dist/shot.{time.time()}.png', full_page=True)
+    save_html(page)
+
     page.get_by_text("Extensions", exact=True).click()
     time.sleep(0.5)
     page.screenshot(path=f'./dist/shot.{time.time()}.png', full_page=True)
