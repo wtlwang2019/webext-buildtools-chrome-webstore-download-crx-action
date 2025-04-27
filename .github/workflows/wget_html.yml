@@ -22,14 +22,17 @@ jobs:
       #     playwright install --with-deps chrome
         
       - name: get html
+        env:
+          target_url: "${{github.event.inputs.url}}"
         run: |
+          pwd
           env
-          export target_url="${{github.event.inputs.url}}"
           wget -O dist/target.html "${{github.event.inputs.url}}"
           env
 
       - name: zip
         run: |
+          pwd
           tar -czvf target.tar.gz dist/
 
       - name: release
