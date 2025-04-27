@@ -1,0 +1,39 @@
+name: "download crx"
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: '请填写url'
+        required: true
+        default: 'https://chrome.google.com/webstore/category/extensions?hl=zh-CN'
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: prepare env
+        run: |
+          which python
+          pip install playwright
+          playwright install --with-deps chromium
+          playwright install --with-deps chrome
+        
+      - name: get crx
+        run: |
+          wget -O dist/target.html "${{github.event.inputs.url}}"
+
+      - name: zip
+        run: |
+          tar -czvf target.tar.gz dist/
+
+      - name: release
+        uses: softprops/action-gh-release@v2.1.0
+        with:
+          tag_name: html_target
+          files: ${{ github.workspace }}/*.gz
+          token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
