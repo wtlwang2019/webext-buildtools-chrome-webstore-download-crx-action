@@ -22,7 +22,7 @@ def download(page, download_locator):
 
 def run(playwright: Playwright) -> None:
     print(f"os env: {os.environ}")
-    browser = playwright.chromium.launch(headless=False, downloads_path='./dist', channel='chrome')
+    browser = playwright.chromium.launch(headless=True, downloads_path='./dist', channel='chrome')
     context = browser.new_context(accept_downloads=True)
     page = context.new_page()
     # Subscribe to "request" and "response" events.
@@ -31,6 +31,13 @@ def run(playwright: Playwright) -> None:
 
     # page.goto("https://www.douyu.com/")
     page.goto("https://chromewebstore.google.com/detail/midscene/gbldofcpkknbggpkmbdaefngejllnief")
+    time.sleep(0.2)
+    page.screenshot(path=f'./dist/shot.{time.time()}.png', full_page=True)
+    save_html(page)
+
+    # page.query_selector()
+    if page.get_by_role('button', name="No thanks").count() > 0:
+        page.get_by_role('button', name="No thanks").first.click()
     time.sleep(0.2)
     page.screenshot(path=f'./dist/shot.{time.time()}.png', full_page=True)
     save_html(page)
