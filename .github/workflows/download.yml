@@ -9,7 +9,7 @@ on:
       url:
         description: '请填写第三方网站的url'
         required: true
-        default: 'https://clients2.google.com/service/update2/crx?response=redirect&x=id%3Dcandehlmleemkaeiighgnagnojmaebeb%26uc'        
+        default: 'https://chromewebstore.google.com/detail/midscene/gbldofcpkknbggpkmbdaefngejllnief'        
 
 jobs:
   build:
