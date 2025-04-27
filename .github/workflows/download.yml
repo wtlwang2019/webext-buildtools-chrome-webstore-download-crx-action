@@ -19,6 +19,7 @@ jobs:
           which python
           pip install playwright
           playwright install chromium
+          playwright install chrome
         
       - name: get crx
         run: |
