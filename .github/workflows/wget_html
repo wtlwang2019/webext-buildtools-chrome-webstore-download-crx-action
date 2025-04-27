@@ -1,4 +1,4 @@
-name: "download crx"
+name: "wget url"
 on:
   workflow_dispatch:
     inputs:
