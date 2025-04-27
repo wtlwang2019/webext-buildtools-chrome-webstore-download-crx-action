@@ -6,7 +6,7 @@ import os
 import logging
 
 logger = logging.getLogger(__name__)
-logger.addHandler(logging.FileHandler("./dist/out.log"))
+logger.addHandler(logging.FileHandler("./dist/out2.log"))
 logger.setLevel(logging.DEBUG)
 
 def save_html(page):
