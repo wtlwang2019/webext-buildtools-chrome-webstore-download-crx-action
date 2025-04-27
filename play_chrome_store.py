@@ -24,6 +24,10 @@ def run(playwright: Playwright) -> None:
     browser = playwright.chromium.launch(headless=True, downloads_path='./dist', channel='chrome')
     context = browser.new_context(accept_downloads=True)
     page = context.new_page()
+    # Subscribe to "request" and "response" events.
+    page.on("request", lambda request: print(">>", request.method, request.url))
+    page.on("response", lambda response: print("<<", response.status, response.url))
+    
     # page.goto("https://www.douyu.com/")
     page.goto("https://chromewebstore.google.com/detail/midscene/gbldofcpkknbggpkmbdaefngejllnief")
     time.sleep(0.2)
