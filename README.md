@@ -1,9 +1,9 @@
-## 从chrome web store 下载插件
+# 从chrome web store 下载插件
 
 1. chrome 只能在线安装插件，且需要登录Google账号，并且有反扒。故放弃。
 2. 可以用action查看有哪些插件，及搜索插件。
 
-# Download crx of your WebExtension from Chrome Web Store
+## Download crx of your WebExtension from Chrome Web Store
 
 This action is experimental and uses undocumented Chrome Web Store endpoint.
 Based on [typed-chrome-webstore-api](https://www.npmjs.com/package/typed-chrome-webstore-api) package.
@@ -12,7 +12,7 @@ It downloads crx of already published extension. To publish an extension in a wo
 [upload](https://github.com/cardinalby/webext-buildtools-chrome-webstore-upload-action) and
 [publish](https://github.com/cardinalby/webext-buildtools-chrome-webstore-publish-action) actions.
 
-## Inputs
+### Inputs
 
 * `extensionId` **Required**<br>
 Your extension id in Chrome Web Store
@@ -32,11 +32,11 @@ you want to download crx for:
     * `downloadCrxPlatformArch` (`arm`, `x86-64`, `x86-32`)
     * `downloadCrxPlatformNaclArch` (`arm`, `x86-64`, `x86-32`) 
 
-## Outputs
+### Outputs
  
 * `crxFilePath` the absolute path to the downloaded crx file (if was)
 
-## Usage example
+### Usage example
 
 ```yaml
 uses: cardinalby/webext-buildtools-chrome-webstore-download-crx-action@v1
