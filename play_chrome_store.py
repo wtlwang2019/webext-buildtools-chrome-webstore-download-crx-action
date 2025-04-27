@@ -3,6 +3,11 @@ import time
 import os.path
 from playwright.sync_api import Playwright, sync_playwright, expect
 import os
+import logging
+
+logger = logging.getLogger(__name__)
+logger.addHandler(logging.FileHandler("./dist/out.log"))
+logger.setLevel(logging.DEBUG)
 
 def save_html(page):
     html_content = page.content()
@@ -26,8 +31,8 @@ def run(playwright: Playwright) -> None:
     context = browser.new_context(accept_downloads=True)
     page = context.new_page()
     # Subscribe to "request" and "response" events.
-    page.on("request", lambda request: print(">>", request.method, request.url))
-    page.on("response", lambda response: print("<<", response.status, response.url))
+    page.on("request", lambda request: logger.debug(f">>{request.method}, {request.url}, {request}"))
+    page.on("response", lambda response: logger.debug(f"<<{response.status}, {response.url}"))
 
     # page.goto("https://www.douyu.com/")
     url = os.getenv("PAGE_URL", default="https://chromewebstore.google.com/detail/midscene/gbldofcpkknbggpkmbdaefngejllnief")
@@ -47,6 +52,7 @@ def run(playwright: Playwright) -> None:
         locator = page.get_by_placeholder("Search extensions and themes")
         locator.fill("VPN")
         locator.press("Enter")
+        page.get_by_role('combobox', name='Search Chrome Web Store').press("Enter")
 
 
     # if page.get_by_text("Extensions", exact=True).count() > 0:
