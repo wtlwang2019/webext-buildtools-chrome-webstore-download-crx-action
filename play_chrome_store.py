@@ -2,7 +2,7 @@ import re
 import time
 import os.path
 from playwright.sync_api import Playwright, sync_playwright, expect
-
+import os
 
 def save_html(page):
     html_content = page.content()
@@ -21,13 +21,14 @@ def download(page, download_locator):
     print(f'文件已下载至：{save_path}')
 
 def run(playwright: Playwright) -> None:
+    print(f"os env: {os.environ}")
     browser = playwright.chromium.launch(headless=True, downloads_path='./dist', channel='chrome')
     context = browser.new_context(accept_downloads=True)
     page = context.new_page()
     # Subscribe to "request" and "response" events.
     page.on("request", lambda request: print(">>", request.method, request.url))
     page.on("response", lambda response: print("<<", response.status, response.url))
-    
+
     # page.goto("https://www.douyu.com/")
     page.goto("https://chromewebstore.google.com/detail/midscene/gbldofcpkknbggpkmbdaefngejllnief")
     time.sleep(0.2)
