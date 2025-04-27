@@ -16,7 +16,7 @@ def run(playwright: Playwright) -> None:
     page = context.new_page()
     # page.goto("https://www.douyu.com/")
     page.goto("https://chromewebstore.google.com/detail/midscene/gbldofcpkknbggpkmbdaefngejllnief")
-    page.get_by_text("Extensions").click()
+    page.get_by_text("Extensions", exact=True).click()
     time.sleep(0.5)
     page.screenshot(path=f'./dist/shot.{time.time()}.png', full_page=True)
     save_html(page)
