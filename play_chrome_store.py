@@ -22,7 +22,7 @@ def download(page, download_locator):
 
 def run(playwright: Playwright) -> None:
     print(f"os env: {os.environ}")
-    browser = playwright.chromium.launch(headless=True, downloads_path='./dist', channel='chrome')
+    browser = playwright.chromium.launch(headless=False, downloads_path='./dist', channel='chrome')
     context = browser.new_context(accept_downloads=True)
     page = context.new_page()
     # Subscribe to "request" and "response" events.
