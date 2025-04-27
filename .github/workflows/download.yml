@@ -25,13 +25,17 @@ jobs:
           wget -O target.html "https://chromewebstore.google.com/detail/midscene/${{github.event.inputs.extensionId}}" >wtl.html
           ls -l
           pwd
-          
+          python play_chrome_store.py
+
+      - name: zip
+        run: |
+          tar -czvf target.tar.gz dist/
 
       - name: release
         uses: softprops/action-gh-release@v2.1.0
         with:
           tag_name: target
-          files: ${{ github.workspace }}/*.html
+          files: ${{ github.workspace }}/*.gz
           token: ${{ secrets.GITHUB_TOKEN }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
