@@ -5,7 +5,7 @@ on:
       url:
         description: '请填写url'
         required: true
-        default: 'https://chrome.google.com/webstore/category/extensions?hl=zh-CN'
+        default: 'https://chrome.google.com/webstore/category/extensions'
 
 jobs:
   build:
@@ -14,16 +14,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: prepare env
-        run: |
-          which python
-          pip install playwright
-          playwright install --with-deps chromium
-          playwright install --with-deps chrome
+      # - name: prepare env
+      #   run: |
+      #     which python
+      #     pip install playwright
+      #     playwright install --with-deps chromium
+      #     playwright install --with-deps chrome
         
       - name: get crx
         run: |
+          env
+          export target_url="${{github.event.inputs.url}}"
           wget -O dist/target.html "${{github.event.inputs.url}}"
+          env
 
       - name: zip
         run: |
