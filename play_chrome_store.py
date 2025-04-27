@@ -43,8 +43,8 @@ def run(playwright: Playwright) -> None:
     page.screenshot(path=f'./dist/shot.{time.time()}.png', full_page=True)
     save_html(page)
 
-    if page.get_by_placeholder("Search Chrome Web Store").count() > 0:
-        locator = page.get_by_placeholder("Search Chrome Web Store")
+    if page.get_by_placeholder("Search extensions and themes").count() > 0:
+        locator = page.get_by_placeholder("Search extensions and themes")
         locator.fill("VPN")
         locator.press("Enter")
 
