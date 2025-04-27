@@ -23,7 +23,7 @@ jobs:
         
       - name: get crx
         run: |
-          wget -O target.html "https://chromewebstore.google.com/detail/midscene/${{github.event.inputs.extensionId}}" >wtl.html
+          # wget -O target.html "https://chromewebstore.google.com/detail/midscene/${{github.event.inputs.extensionId}}" >wtl.html
           ls -l
           pwd
           python play_chrome_store.py
