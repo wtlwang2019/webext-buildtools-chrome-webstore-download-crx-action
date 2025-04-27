@@ -30,7 +30,8 @@ def run(playwright: Playwright) -> None:
     page.on("response", lambda response: print("<<", response.status, response.url))
 
     # page.goto("https://www.douyu.com/")
-    page.goto("https://chromewebstore.google.com/detail/midscene/gbldofcpkknbggpkmbdaefngejllnief")
+    url = os.getenv("PAGE_URL", default="https://chromewebstore.google.com/detail/midscene/gbldofcpkknbggpkmbdaefngejllnief")
+    page.goto(url)
     time.sleep(0.2)
     page.screenshot(path=f'./dist/shot.{time.time()}.png', full_page=True)
     save_html(page)
@@ -42,7 +43,8 @@ def run(playwright: Playwright) -> None:
     page.screenshot(path=f'./dist/shot.{time.time()}.png', full_page=True)
     save_html(page)
 
-    page.get_by_text("Extensions", exact=True).click()
+    if page.get_by_text("Extensions", exact=True).count() > 0:
+        page.get_by_text("Extensions", exact=True).click()
     time.sleep(0.5)
     page.screenshot(path=f'./dist/shot.{time.time()}.png', full_page=True)
     save_html(page)
