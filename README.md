@@ -1,4 +1,7 @@
-![Node.js CI](https://github.com/cardinalby/webext-buildtools-chrome-webstore-download-crx-action/workflows/build-test/badge.svg)
+## 从chrome web store 下载插件
+
+1. chrome 只能在线安装插件，且需要登录Google账号，并且有反扒。故放弃。
+2. 可以用action查看有哪些插件，及搜索插件。
 
 # Download crx of your WebExtension from Chrome Web Store
 
