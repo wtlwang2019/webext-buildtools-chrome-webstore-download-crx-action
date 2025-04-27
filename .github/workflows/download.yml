@@ -18,8 +18,8 @@ jobs:
         run: |
           which python
           pip install playwright
-          playwright install chromium
-          playwright install chrome
+          playwright install --with-deps chromium
+          playwright install --with-deps chrome
         
       - name: get crx
         run: |
