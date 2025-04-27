@@ -6,6 +6,10 @@ on:
         description: '请填写chrome插件id'
         required: true
         default: 'gbldofcpkknbggpkmbdaefngejllnief'
+      url:
+        description: '请填写第三方网站的url'
+        required: true
+        default: 'https://clients2.google.com/service/update2/crx?response=redirect&x=id%3Dcandehlmleemkaeiighgnagnojmaebeb%26uc'        
 
 jobs:
   build:
@@ -27,6 +31,8 @@ jobs:
           ls -l
           pwd
           python play_chrome_store.py
+        env:
+          PAGE_URL: ${{ github.event.inputs.url }}
 
       - name: zip
         run: |
