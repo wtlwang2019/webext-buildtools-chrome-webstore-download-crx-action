@@ -8,7 +8,7 @@ on:
         default: 'https://chrome.google.com/webstore/category/extensions'
 
 jobs:
-  build:
+  build_html:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
@@ -21,7 +21,7 @@ jobs:
       #     playwright install --with-deps chromium
       #     playwright install --with-deps chrome
         
-      - name: get crx
+      - name: get html
         run: |
           env
           export target_url="${{github.event.inputs.url}}"
